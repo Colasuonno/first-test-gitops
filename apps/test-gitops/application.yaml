@@ -1,0 +1,3 @@
+name: test-gitops
+namespace: test-gitops
+dir: apps/test-gitops/manifests

@@ -1,3 +1,0 @@
-name: database
-namespace: database
-dir: apps/database/manifests
