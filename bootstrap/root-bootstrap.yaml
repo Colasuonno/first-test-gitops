@@ -16,11 +16,15 @@ spec:
     spec:
       project: default
       source:
-        repoURL: '{{ .repoURL }}'   # letto dal file
+        repoURL: https://github.com/Colasuonno/first-test-gitops
+        targetRevision: main
+        path: '{{ .path }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ .namespace }}'
       syncPolicy:
-        automated: {}
-        syncOptions:
-          - CreateNamespace=true
+          automated:
+            prune: true
+            selfHeal: true
+          syncOptions:
+            - CreateNamespace=true
