@@ -19,7 +19,7 @@ spec:
       source:
         repoURL: https://github.com/Colasuonno/first-test-gitops
         targetRevision: main
-        path: '{{ .path }}'
+        path: '{{ .dir }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ .namespace }}'
