@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: root
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/Colasuonno/first-test-gitops
+        revision: main
+        files:
+          - path: apps/*/application.yaml
+  template:
+    metadata:
+      name: '{{ .name }}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{ .repoURL }}'   # letto dal file
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ .namespace }}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
