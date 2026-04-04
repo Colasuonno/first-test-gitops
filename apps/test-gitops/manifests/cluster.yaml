@@ -10,3 +10,7 @@ spec:
     storageClass: local-path
   superuserSecret:
     name: postgresql-superuser
+  bootstrap:
+    initdb:
+      database: postgres
+      owner: postgres
